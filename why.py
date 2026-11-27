@@ -14,7 +14,7 @@ class paitent(BaseModel): # This is our base model
     ig_url : AnyUrl
     age : int = Field(gt=0)
     weight : float
-    sugar : Annotated[bool , Field(None , 
+    sugar : Annotated[bool , Field(default=None , 
                                    title="Diabaities",
                                    description="Add Data about dibaitic paitent")]
     allergies : Optional[List[str]] = Field(max_length=20) # This is a optional feild
@@ -27,7 +27,7 @@ paitent_info = {'name' : 'Shiv',
                 'age' : 19,
                 'weight' : 65.89,
                 'sugar' : False,
-                #'allergies' : ['dust' , 'light'],
+                'allergies' : ['dust' , 'light'],
                 'contact' : {'email' : 'xyz@gmail.com' , 'number' : '1234567899'}}
 
 
@@ -37,7 +37,14 @@ paitent1 = paitent(**paitent_info) # **-> unpack our dictnory
 
 # Defining paitent function
 def insert_paitent_data(paitent:paitent):
-    print(paitent.name ,paitent.email ,paitent.ig_url,  paitent.age , paitent.sugar , paitent.weight , paitent.allergies , paitent.contact , sep='\n')
+    print(paitent.name ,
+          paitent.email ,
+          paitent.ig_url,  
+          paitent.age , 
+          paitent.sugar , 
+          paitent.weight , 
+          paitent.allergies , 
+          paitent.contact , sep='\n')
     print("!!data inserted sucessfully")
 
 
