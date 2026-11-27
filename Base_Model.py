@@ -12,7 +12,7 @@ class paitent(BaseModel): # This is our base model
                            examples=["amit" , "shena"])]
     email : EmailStr 
     ig_url : AnyUrl
-    age : int = Field(gt=0)
+    age : int = Field(gt=0 , lt = 120)
     weight : float
     sugar : Annotated[bool , Field(default=None , 
                                    title="Diabaities",
