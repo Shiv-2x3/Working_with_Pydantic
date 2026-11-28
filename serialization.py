@@ -17,5 +17,7 @@ address1 = Address(**adress_dict)
 paitent_dict = {"name" : "shiv" , "age" : 45 , "gender"  : "male" , "address" : address1}
 paitent1 = paitent(**paitent_dict)
 
-temp = paitent1.model_dump()
-print(temp)
+temp = paitent1.model_dump(include='name')
+
+
+json_dump = paitent1.model_dump_json()
