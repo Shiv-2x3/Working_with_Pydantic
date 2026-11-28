@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="510" viewBox="0 0 1120 510" role="img" aria-labelledby="title description">
+  <title id="title">How Pydantic validates data</title>
+  <desc id="description">Input data and a Python model schema go through Pydantic validation, resulting in a typed model or a validation error. Valid models can be serialized.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#111827"/>
+      <stop offset="1" stop-color="#202b3d"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f97316"/>
+      <stop offset="1" stop-color="#e11d48"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0 0 10 5 0 10z" fill="#9ca3af"/>
+    </marker>
+    <style>
+      text { font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; }
+      .label { fill: #f9fafb; font-size: 19px; font-weight: 700; }
+      .small { fill: #cbd5e1; font-size: 15px; }
+      .code { fill: #e2e8f0; font: 15px ui-monospace, SFMono-Regular, Menlo, monospace; }
+    </style>
+  </defs>
+  <rect width="1120" height="510" rx="26" fill="url(#background)"/>
+  <circle cx="72" cy="68" r="28" fill="url(#accent)"/>
+  <path d="m60 68 8 8 17-19" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="116" y="65" fill="#fff" font-size="29" font-weight="750">Pydantic</text>
+  <text x="116" y="91" class="small">Typed data, validated at runtime</text>
+
+  <rect x="48" y="157" width="230" height="194" rx="18" fill="#1e293b" stroke="#475569"/>
+  <text x="72" y="194" class="label">1. Input data</text>
+  <text x="72" y="229" class="code">{</text>
+  <text x="89" y="255" class="code">"name": "Asha",</text>
+  <text x="89" y="281" class="code">"age": "24",</text>
+  <text x="89" y="307" class="code">"email": "asha@…"</text>
+  <text x="72" y="333" class="code">}</text>
+
+  <rect x="48" y="375" width="230" height="92" rx="18" fill="#1e293b" stroke="#475569"/>
+  <text x="72" y="412" class="label">2. Model schema</text>
+  <text x="72" y="441" class="code">name: str · age: int</text>
+
+  <path d="M298 253h93" fill="none" stroke="#9ca3af" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M298 421h55q38 0 38-37v-94" fill="none" stroke="#9ca3af" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <rect x="408" y="207" width="270" height="138" rx="22" fill="#3b1f35" stroke="#fb7185" stroke-width="2"/>
+  <text x="543" y="252" fill="#fff" font-size="22" font-weight="700" text-anchor="middle">3. Validate</text>
+  <text x="543" y="285" class="small" text-anchor="middle">Types · constraints</text>
+  <text x="543" y="311" class="small" text-anchor="middle">Custom validators</text>
+
+  <path d="M695 250h66v-91h43" fill="none" stroke="#9ca3af" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M695 301h66v100h43" fill="none" stroke="#9ca3af" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <rect x="820" y="112" width="250" height="124" rx="18" fill="#123d38" stroke="#34d399" stroke-width="2"/>
+  <text x="945" y="151" fill="#a7f3d0" font-size="18" font-weight="700" text-anchor="middle">4a. Valid model</text>
+  <text x="945" y="183" class="small" text-anchor="middle">Typed Python object</text>
+  <text x="945" y="209" class="code" text-anchor="middle">user.age == 24</text>
+
+  <path d="M945 244v48" fill="none" stroke="#9ca3af" stroke-width="3" marker-end="url(#arrow)"/>
+  <rect x="820" y="302" width="250" height="83" rx="18" fill="#1e293b" stroke="#64748b"/>
+  <text x="945" y="337" class="label" text-anchor="middle">5. Serialize</text>
+  <text x="945" y="363" class="code" text-anchor="middle">model_dump() / JSON</text>
+
+  <rect x="820" y="408" width="250" height="65" rx="18" fill="#451a24" stroke="#fb7185" stroke-width="2"/>
+  <text x="945" y="435" fill="#fecdd3" font-size="17" font-weight="700" text-anchor="middle">4b. Invalid data</text>
+  <text x="945" y="458" class="small" text-anchor="middle">ValidationError with details</text>
+</svg>
