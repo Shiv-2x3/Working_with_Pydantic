@@ -1,4 +1,5 @@
-from pydantic import BaseModel , EmailStr , field_validator ,model_validator
+from pydantic import BaseModel , EmailStr  , AnyUrl , model_validator
+
 from typing import List , Dict
 
 class paitent(BaseModel):
@@ -7,25 +8,31 @@ class paitent(BaseModel):
     age : int
     email : EmailStr
     marrige : bool
+    ig_url : AnyUrl
+    height : float
+    sugar : bool
     weight : float
-    contact = Dict[str , str]
+    allergies :List[str]
+    contact : Dict[str , str]
 
     @classmethod
-    @model_validator(mode= "after")
-    def validate_emergency_conatct(cls , model):
+    @model_validator(mode='after')
+    def validate_emergency_contact(cls , model):
         if model.age > 60 and 'emergency' not in model.contact_details:
-            raise ValueError("person should have emergency contact")
+            raise ValueError("Person SHoudl have some emergency contact")
         else:
             return model
-
-
+    
 
 paitent_info = {'name' : 'Shiv',
-                'email' : 'Shiv@gmail.com',
+                'email' : 'Shiv@hdfc.bank',
+                'marrige' : False,
                 'ig_url' : "https://instagram?24344",
                 'age' : 19,
                 'weight' : 65.89,
+                'height' : 23,
                 'sugar' : False,
+                'allergies' : ['dust' , 'light'],
                 'contact' : {'email' : 'xyz@gmail.com' , 'number' : '1234567899'}}
 
 
@@ -41,6 +48,7 @@ def insert_paitent_data(paitent:paitent):
           paitent.age , 
           paitent.sugar , 
           paitent.weight , 
+          paitent.allergies ,
           paitent.contact , sep='\n')
     print("!!data inserted sucessfully")
 
