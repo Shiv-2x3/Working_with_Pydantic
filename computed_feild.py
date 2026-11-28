@@ -1,4 +1,4 @@
-from pydantic import BaseModel , EmailStr , computed_feild
+from pydantic import BaseModel , EmailStr , computed_field , AnyUrl
 from typing import List , Dict
 
 class paitent(BaseModel):
@@ -7,12 +7,14 @@ class paitent(BaseModel):
     age : int
     email : EmailStr
     marrige : bool
-    height : bool
+    ig_url : AnyUrl
+    height : float
+    sugar : bool
     weight : float
-    allergies = List[str]
-    constct = Dict[str , str]
+    allergies :List[str]
+    contact : Dict[str , str]
 
-    @computed_feild
+    @computed_field
     @property
     def cal_BMI(self) -> float:
         BMI = round(self.weight /(self.height**2),2)
@@ -21,6 +23,7 @@ class paitent(BaseModel):
 
 paitent_info = {'name' : 'Shiv',
                 'email' : 'Shiv@gmail.com',
+                'marrige' : False,
                 'ig_url' : "https://instagram?24344",
                 'age' : 19,
                 'weight' : 65.89,
